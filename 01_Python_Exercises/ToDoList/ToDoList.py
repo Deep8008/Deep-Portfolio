@@ -23,16 +23,22 @@ class ToDoList:
 
         self.task_list = []
         
-        config_file = "config.txt"
+        config_file = os.path.join(os.path.dirname(__file__), "config.txt")
+
         if os.path.isfile(config_file):
             with open(config_file, "r") as f:
-                self.filename = f.read().strip()
+                path = f.read().strip()
         else:
-            self.filename = input("Enter full path for ToDoList CSV file: ")
+            path = input("Enter full path for ToDoList CSV file (folder or file): ")
             with open(config_file, "w") as f:
-                f.write(self.filename)
+                f.write(path)
 
+        if os.path.isdir(path):
+            path = os.path.join(path, "ToDoList_csv.csv")
+
+        self.filename = path
         self.load_from_csv()
+
 
     def add_task(self, job, desc, prio):
         self.task_list.append(Task(job, desc, prio))
