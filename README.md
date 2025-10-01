@@ -10,33 +10,18 @@ This repository showcases my programming journey, from beginner exercises in Pyt
 ### 01_Python_Exercises
 - Beginner-level Python exercises and small projects
 - Example: Todo App, simple CLI programs
-- **Level**: Beginner
-
-### 02_SQL_Projects
-- Data management and database projects (to be added)
-- Example: Library Management, Student Records
 - **Level**: Beginner to Intermediate
 
-### 03_Django_Projects
-- Web projects using Django (to be added)
+### 02_Django_Exercises
+- Web projects using Django
 - Example: Blog, small E-commerce site
-- **Level**: Intermediate
-
-### 04_API_Projects
-- Backend & API projects (to be added)
-- Example: Todo API, Weather API
-- **Level**: Intermediate
-
-### 05_FullStack_Projects
-- Full-stack projects combining frontend and backend (to be added)
-- Example: Social App, Order Management App
-- **Level**: Advanced
+- **Level**: Beginner to Intermediate
 
 ---
 
 ## ⚡ Skills & Technologies
 - **Languages**: Python  
-- **Frameworks**: Django, Flask  
+- **Frameworks**: Django 
 - **Databases**: PostgreSQL, SQLite  
 - **Tools**: Git, Postman, REST APIs  
 
