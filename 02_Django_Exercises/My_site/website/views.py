@@ -2,10 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 
 def home_view(request):
-    return render(request, "main_pages/index.html")
+    return render(request, "website/index.html")
 
 def support_view(request):
-    return render(request, "main_pages/support.html")
+    return render(request, "website/support.html")
 
 def about_view(request):
-    return render(request, "main_pages/about.html")
+    return render(request, "website/about.html")
