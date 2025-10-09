@@ -4,8 +4,8 @@ from django.http import HttpResponse, JsonResponse
 def home_view(request):
     return render(request, "website/index.html")
 
-def support_view(request):
-    return render(request, "website/support.html")
+def contact_view(request):
+    return render(request, "website/contact.html")
 
 def about_view(request):
     return render(request, "website/about.html")
