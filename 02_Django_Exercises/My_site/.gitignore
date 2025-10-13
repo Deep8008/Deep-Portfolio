@@ -1,0 +1,67 @@
+# ==========================
+# Django
+# ==========================
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+media/
+staticfiles/
+
+# ==========================
+# Python
+# ==========================
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+pip-wheel-metadata/
+*.pyo
+*.pyd
+*.whl
+
+# ==========================
+# Virtual Environment
+# ==========================
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ==========================
+# Environment Variables
+# ==========================
+.env
+.env.*
+*.env
+
+# ==========================
+# IDEs & Editors
+# ==========================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ==========================
+# OS Files
+# ==========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==========================
+# Misc / Temp
+# ==========================
+*.tmp
+*.bak
+*.swp
+.cache/
