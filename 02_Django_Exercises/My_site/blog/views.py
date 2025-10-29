@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, JsonResponse
 from blog.models import Post
 from django.utils import timezone
 
@@ -8,12 +7,15 @@ def blog_view(request):
     context = {'posts': posts}
     return render(request, "blog/blog-home.html", context)
 
-def blog_single(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    post.counted_views += 1
-    post.save(update_fields=['counted_views'])
-    
-    return render(request, "blog/blog-single.html")
+def blog_single(request, pid):
+    post = get_object_or_404(Post, pk=pid, status=1)
+
+    prev_post = Post.objects.filter(id__lt=post.id).order_by('-id').first()
+    next_post = Post.objects.filter(id__gt=post.id).order_by('id').first()
+
+    context = {'posts': post, 'prev_post': prev_post, 'next_post': next_post}
+
+    return render(request, "blog/blog-single.html", context)
 
 def test(request, pid):
     posts = get_object_or_404(Post, pk=pid)
