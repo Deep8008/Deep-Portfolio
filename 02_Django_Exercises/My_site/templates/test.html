@@ -1,3 +1,5 @@
+{% load blog_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +9,20 @@
 </head>
 <body>
 
-    <p>{{posts.title}}</p>
+    <h1>Test Content</h1>
+    <p>test: {% posts as totalposts %}</p>
+    {% for post in totalposts %}
+        <p>{{ forloop.counter }}- {{post}}: </p>
+        <p>"{{post.content|snippet:50}}"</p>
+    {% endfor %}
+    <p>count of posts: {% postcount %}</p>
+
+    <h2>last two posts {% latestposts 2 %}</h2>
+
+    {% for post in latestposts %}
+        <p>{{post}}</p>
+    {% endfor %}
+
     
 </body>
 </html>
