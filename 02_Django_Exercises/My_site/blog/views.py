@@ -6,6 +6,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 def blog_view(request, **kwargs):
     posts = Post.objects.filter(published_date__lte=timezone.now(), status = 1)
+    
     if kwargs.get('cat_name') != None :
         posts = posts.filter(category__name=kwargs.get('cat_name'))
 
