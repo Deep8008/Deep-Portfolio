@@ -5,24 +5,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>form test</title>
 </head>
 <body>
 
-    <h1>Test Content</h1>
-    <p>test: {% posts as totalposts %}</p>
-    {% for post in totalposts %}
-        <p>{{ forloop.counter }}- {{post}}: </p>
-        <p>"{{post.content|snippet:50}}"</p>
-    {% endfor %}
-    <p>count of posts: {% postcount %}</p>
+    <form action="{% url 'website:test' %}" method="post">
+        {% csrf_token %}
 
-    <h2>last two posts {% latestposts 2 %}</h2>
+        {{form.as_p}}
+        <button type="submit">submit</button>
+    </form>
 
-    {% for post in latestposts %}
-        <p>{{post}}</p>
-    {% endfor %}
-
-    
 </body>
 </html>
