@@ -1,5 +1,5 @@
 from django import template
-from blog.models import Post, Category
+from blog.models import Post, Category, Comment
 
 register = template.Library()
 
@@ -42,3 +42,7 @@ def cloud_tags():
     result = {'categories': data}
 
     return result
+
+@register.simple_tag(name='comments_count')
+def function(pid):
+    return Comment.objects.filter(post=pid, approved=True).count()

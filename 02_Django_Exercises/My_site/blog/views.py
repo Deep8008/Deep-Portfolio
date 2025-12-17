@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from blog.models import Post
+from blog.models import Post, Comment
 from django.utils import timezone
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from blog.forms import CommentForm
+from django.contrib import messages
 
 
 def blog_view(request, **kwargs):
@@ -31,18 +33,28 @@ def blog_view(request, **kwargs):
     context = {'posts': posts}
     return render(request, "blog/blog-home.html", context)
 
+
 def blog_single(request, pid):
     posts = get_object_or_404(Post, pk=pid, status=1)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = posts 
+            form.save()
+            messages.success(request, "Your Comment submited Succsessfuly!")
+        else:
+            messages.error(request, "Your Comment didnt submit!")
 
     prev_post = Post.objects.filter(id__lt=posts.id).order_by('-id').first()
     next_post = Post.objects.filter(id__gt=posts.id).order_by('id').first()
 
-    context = {'posts': posts, 'prev_post': prev_post, 'next_post': next_post}
+    comments = Comment.objects.filter(post=posts.id, approved=True)
+    form = CommentForm()
 
+    context = {'posts': posts, 'comments': comments, 'form': form, 'prev_post': prev_post, 'next_post': next_post}
     return render(request, "blog/blog-single.html", context)
-
-def test(request):
-    return render(request, "test.html")
 
 
 def blog_category(request, cat_name):
