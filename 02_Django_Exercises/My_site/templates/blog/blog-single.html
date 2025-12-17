@@ -59,7 +59,7 @@
 					<div class="col-lg-9 col-md-9">
 						<h3 class="mt-20 mb-20">{{posts.title}}</h3>
 						<p class="excert">
-							{{posts.content}}
+							{{posts.content|safe}}
 						</p>
 					</div>
 				</div>
@@ -253,7 +253,8 @@
 
 					{% include 'blog/blog-newsletter.html' %}
 					
-					{% cloud_tags %}
+					{% include "blog/blog-cloud-tags.html" %}	
+
 
 				</div>
 			</div>
